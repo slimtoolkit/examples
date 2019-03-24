@@ -32,8 +32,3 @@ to
 client = MongoClient('mongodb://localhost:27017/')
 ```
 
-### KCQ EXTRA
-
-https://medium.com/@stackingvue/will-fix-it-working-fine-after-that-d5ff8ba9d4ed
-
-
