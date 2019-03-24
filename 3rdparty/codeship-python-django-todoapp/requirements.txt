@@ -1,0 +1,7 @@
+Django==1.11.3
+djangorestframework==3.6.3
+psycopg2==2.7.2
+django-cors-headers==2.1.0
+dj-database-url==0.4.2
+gunicorn==19.7.1
+virtualenv==15.1.0

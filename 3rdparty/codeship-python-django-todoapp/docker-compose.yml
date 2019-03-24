@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgres://todoapp@postgres/todos
+  postgres:
+    image: healthcheck/postgres:alpine
+    environment:
+      POSTGRES_USER: todoapp
+      POSTGRES_DB: todos
