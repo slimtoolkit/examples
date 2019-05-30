@@ -56,7 +56,11 @@ PHP application images:
 
 * from php:7.0-cli - 368MB => 26.6MB (minified by **13.85X**)
 
+Haskell application images:
+
+* (Scotty service) from elixir:8 - 2.09GB => 16.6MB (minified by **125.32X**)
+
 Elixir application images:
 
-* (Phoenix service) from elixir:1.6 - 1.1 GB => 37 MB (minified by **29.25X**)
+* (Phoenix service) from elixir:1.6 - 1.1GB => 37MB (minified by **29.25X**)
 
