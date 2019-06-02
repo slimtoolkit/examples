@@ -3,8 +3,6 @@
 here="$(dirname "$BASH_SOURCE")"
 cd $here
 
-#docker-machine start default
-eval "$(docker-machine env default)"
 docker build -t my/java-app .
 
 
