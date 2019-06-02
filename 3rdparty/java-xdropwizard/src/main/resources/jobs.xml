@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<job-scheduling-data>
+
+  <schedule>
+    <job>
+      <name>SampleJob3</name>
+      <job-class>org.knowm.xdropwizard.jobs.SampleJob3</job-class>
+      <job-data-map>
+        <entry>
+          <key>MyParam</key>
+          <value>42</value>
+        </entry>
+      </job-data-map>
+    </job>
+    <trigger>
+      <cron>
+        <name>SampleJob3-Trigger</name>
+        <job-name>SampleJob3</job-name>
+        <cron-expression>0/45 * * * * ?</cron-expression>
+      </cron>
+    </trigger>
+
+    <!-- 		<job> -->
+    <!-- 			<name>MyJob</name> -->
+    <!-- 			<job-class>org.knowm.xdropwizard.jobs.MyJob</job-class> -->
+    <!-- 		</job> -->
+
+  </schedule>
+
+</job-scheduling-data>

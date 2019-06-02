@@ -1,0 +1,25 @@
+server:
+  type: simple
+  applicationContextPath: /
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: @OPENSHIFT_DIY_PORT@
+    bindHost: @OPENSHIFT_DIY_IP@
+
+sundial:
+  thread-pool-size: 5
+  shutdown-on-unload: true
+  wait-on-shutdown: false
+  start-delay-seconds: 0
+  start-scheduler-on-load: true
+  global-lock-on-load: false
+
+
+yank:
+  dbPropsFileName: DB.properties
+  sqlPropsFileName: SQL.properties
+
+template: Hello, %s!
+defaultName: Stranger
+  

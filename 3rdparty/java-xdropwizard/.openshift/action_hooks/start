@@ -1,0 +1,3 @@
+#!/bin/bash
+cd $OPENSHIFT_REPO_DIR
+nohup java -jar target/xdropwizard-1.1.0-SNAPSHOT.jar server xdropwizard.openshift.yml > ${OPENSHIFT_DIY_LOG_DIR}/xdropwizard.log 2>&1 & 

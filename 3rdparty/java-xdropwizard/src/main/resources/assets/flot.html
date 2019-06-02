@@ -1,0 +1,36 @@
+<html>
+
+<head>
+  <title>Sample Flot Page</title>
+  <!-- Bootstrap core CSS -->
+  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<h1>Sample Flot HTML Page</h1>
+<p>This is a sample html page demonstrating Flot.</p>
+
+<div class="github notFullWidth">
+  <div id="placeholder"
+       style="width: 600px; height: 400px; font-size: 14px; line-height: 1.2em;"></div>
+</div>
+<script src="/bower_components/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="/bower_components/flot/jquery.flot.js"></script>
+<script>
+    $(function() {
+
+      var d1 = [];
+      for (var i = 0; i < 14; i += 0.5) {
+        d1.push([i, Math.sin(i)]);
+      }
+
+      $.plot("#placeholder", [d1]);
+
+    });
+
+
+</script>
+</body>
+
+</html>

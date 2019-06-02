@@ -1,0 +1,42 @@
+server:
+  type: simple
+  rootPath: '/service/*'
+  applicationContextPath: /
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: 9090
+
+logging:
+  level: INFO
+  appenders:
+    - type: console
+      threshold: ALL
+      timeZone: UTC
+      target: stdout
+    - type: file
+      threshold: ALL
+      currentLogFilename: ./log/xdropwizard.log
+      archivedLogFilenamePattern: ./log/xdropwizard-%d.log.gz,
+      archivedFileCount: 5
+      timeZone: UTC
+
+sundial:
+  thread-pool-size: 5
+  shutdown-on-unload: true
+  start-delay-seconds: 0
+  start-scheduler-on-load: true
+  global-lock-on-load: false
+  annotated-jobs-package-name: org.knowm.xdropwizard.jobs
+
+
+yank:
+  - dbPropsFileName: DB.properties
+    sqlPropsFileName: SQL.properties
+  - poolName: mypool
+    dbPropsFileName: DB.properties
+    sqlPropsFileName: SQL.properties
+
+template: Hello, %s!
+defaultName: Stranger
+  

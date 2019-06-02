@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+<head>
+  <meta charset="utf-8">  <!-- it's important for d3.js -->
+  <title>Angular-nvD3 Line Chart 1</title>
+  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="/bower_components/d3/d3.js"></script>
+  <script src="/bower_components/nvd3/build/nv.d3.js"></script>
+  <script src="/bower_components/angular-nvd3/dist/angular-nvd3.js"></script>
+  <link rel="stylesheet" href="bower_components/nvd3/build/nv.d3.css">
+  <script src="/js/nvd3-chart1.js"></script>
+
+</head>
+
+<body ng-controller="MainCtrl">
+
+
+<h1>Sample Angular-nvD3 HTML Page</h1>
+<p>This is a sample html page demonstrating Angular-nvD3 with data generated in the JS file.</p>
+
+<nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
+
+<br><a href="http://krispo.github.io/angular-nvd3/" target="_blank" style="float: right;">See
+  more</a>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+
+<head>
+  <title>XDropWizard</title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <meta name="description" content="XDropWizard">
+  <meta name="keywords" content="XDropWizard, Knowm, DropWizard">
+  <link id="favicon" type="image/png" rel="shortcut icon"
+        href="/img/favicon.png"/>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap core CSS -->
+  <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" type="text/css" href="/css/dashboard.css"/>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"
+              data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+              aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span> <span
+          class="icon-bar"></span> <span class="icon-bar"></span> <span
+          class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">XDropWizard</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+      <form class="navbar-form navbar-right">
+        <input type="text" class="form-control" placeholder="Search...">
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li><a href="/service/hello-world">Hello World Webservice
+          JSON End Point</a></li>
+        <li><a href="/admin">DropWizard Admin</a>
+        </li>
+        <li><a href="/admin/healthcheck">DropWizard
+          Health Check</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a href="/img/favicon.png">favicon.png</a>
+        </li>
+        <li><a href="/css/dashboard.css">dashboard.css</a>
+        </li>
+        <li><a href="/sample.html">sample.html</a>
+        </li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a href="/service/book/random">Yank Random Book</a></li>
+        <li><a href="/service/book/all">Yank All Books</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a href="/service/xchart/random.png">XChart Chart 1</a></li>
+        <li><a href="/xchart.html">XChart Chart 2</a>
+        </li>
+        <li><a href="/flot.html">Flot Chart</a></li>
+        <li><a href="/nvd3-chart1.html">nvD3 Chart 1</a></li>
+        <li><a href="/nvd3-chart2.html">nvD3 Chart 2</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a href="/service/view/book">Freemarker
+          Book View</a></li>
+        <li><a href="/books.html">AngularJs
+          Book View</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a href="/ajax.html">Ajax Demo</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a href="/service/authenticated">Basic Authentication</a></li>
+      </ul>
+      <ul class="nav nav-sidebar">
+        <li><a href="/fileupload.html">File Upload</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Dashboard</h1>
+
+      <div class="row placeholders">
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <img src="/img/dropwizard.png" class="img-responsive"
+               alt="Generic placeholder thumbnail">
+          <h4>DropWizard</h4>
+          <span class="text-muted">An awesome Java Web App Framework</span>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <img src="/img/Yank_256_256.png" class="img-responsive"
+               alt="Generic placeholder thumbnail">
+          <h4>Yank</h4>
+          <span class="text-muted">Ultra-light JDBC persistence layer</span>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <img src="/img/Sundial_256_256.png" class="img-responsive"
+               alt="Generic placeholder thumbnail">
+          <h4>Sundial</h4>
+          <span class="text-muted">Simple Job Scheduler for Java</span>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <img src="/img/XChart_256_256.png" class="img-responsive"
+               alt="Generic placeholder thumbnail">
+          <h4>XChart</h4>
+          <span class="text-muted">Hassle-free Charts for Java</span>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <img src="/img/bootstrap.png" class="img-responsive"
+               alt="Generic placeholder thumbnail">
+          <h4>Bootstrap</h4>
+          <span class="text-muted">Simple and Good CSS</span>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <img src="/img/angular.png" class="img-responsive"
+               alt="Generic placeholder thumbnail">
+          <h4>AngularJS</h4>
+          <span class="text-muted">Superheroic JavaScript MVW
+							Framework</span>
+        </div>
+        <div class="col-xs-6 col-sm-3 placeholder">
+          <img src="/img/flot.jpeg" class="img-responsive"
+               alt="Generic placeholder thumbnail">
+          <h4>Flot</h4>
+          <span class="text-muted">Attractive JavaScript plotting for
+							jQuery</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+</body>
+
+</html>
