@@ -2,4 +2,7 @@
 
 here="$(dirname "$BASH_SOURCE")"
 cd $here
-docker-slim build --http-probe=false my/golang-app-alpine
+
+curl http://localhost:9000
+
+

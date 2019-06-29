@@ -2,8 +2,7 @@ FROM centos:7
 
 RUN yum -y update && \
 	yum -y install epel-release && \
-	yum -y install python-pip && \
-	yum -y install python-devel && \
+	yum -y install python-pip python-devel --nogpgcheck && \
 	yum -y groupinstall 'development tools' && \
 	yum clean all && \
 	mkdir -p /opt/my/service

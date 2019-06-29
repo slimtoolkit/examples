@@ -3,4 +3,4 @@
 here="$(dirname "$BASH_SOURCE")"
 cd $here
 
-docker-slim build --http-probe my/node-app-distroless
+docker-slim build --expose 8000 --http-probe my/node-app-distroless
