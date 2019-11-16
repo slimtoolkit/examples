@@ -3,6 +3,6 @@
 here="$(dirname "$BASH_SOURCE")"
 cd $here
 
-docker-slim build --http-probe my/java-dropwizard-standard
+docker-slim build my/java-dropwizard-standard
 
 

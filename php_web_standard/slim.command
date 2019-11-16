@@ -2,4 +2,4 @@
 
 here="$(dirname "$BASH_SOURCE")"
 cd $here
-docker-slim build --http-probe my/php-web-app
+docker-slim build my/php-web-app

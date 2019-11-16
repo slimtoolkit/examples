@@ -1,0 +1,6 @@
+.DS_Store
+*.pyc
+*.py~
+*.py#
+_docker-slim/
+_docker-slim.env

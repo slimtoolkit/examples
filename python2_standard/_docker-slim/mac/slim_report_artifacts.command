@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 here="$(dirname "$BASH_SOURCE")"
-cd $here
+cd $here/..
+./slim_report_artifacts.sh
 
-docker-slim build my/ruby-rails-app
+
 
 

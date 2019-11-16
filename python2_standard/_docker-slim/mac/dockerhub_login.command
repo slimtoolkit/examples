@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
 here="$(dirname "$BASH_SOURCE")"
-cd $here
+cd $here/../..
 
-docker-slim build my/ruby-rails-app
-
+docker login
 
