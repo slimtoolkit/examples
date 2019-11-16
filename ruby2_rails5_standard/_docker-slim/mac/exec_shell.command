@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 here="$(dirname "$BASH_SOURCE")"
-cd $here
+cd $here/..
+./exec_shell.sh
 
-curl http://localhost:3333
 
 

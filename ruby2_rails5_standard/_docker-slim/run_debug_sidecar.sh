@@ -9,7 +9,5 @@ BDIR="$( cd -P "$( dirname "$SOURCE" )/.." && pwd )"
 pushd $BDIR
 source _docker-slim.env
 
-printf "\ncurl http://localhost:1300/$API_PATH\n"
-curl http://localhost:1300/$API_PATH
-printf "\n\n\n"
+docker run --rm -it --pid=container:$CONTAINER_NAME --net=container:$CONTAINER_NAME --cap-add sys_admin alpine sh
 popd
