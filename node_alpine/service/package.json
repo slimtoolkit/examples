@@ -8,6 +8,6 @@
   },
   "author": "Kyle Quest",
   "dependencies": {
-    "hapi": "^9.0.1"
+    "hapi": "^18.1.0"
   }
 }
