@@ -12,12 +12,13 @@ extern crate rustc_version_runtime;
 extern crate semver;
 
 use rustc_version_runtime::version;
-use semver::Version;
+//use semver::Version;
 
 use actix_web::{
-    error, http, middleware, server, App, AsyncResponder, Error, HttpMessage,
+    error, http, middleware, server, App, Error,
     HttpRequest, HttpResponse, Json,
 };
+//AsyncResponder, HttpMessage
 
 #[derive(Debug, Serialize, Deserialize)]
 struct Response {
@@ -53,11 +54,11 @@ fn main()
         App::new()
             .middleware(middleware::Logger::default())
             .resource("/", |r| r.method(http::Method::GET).f(on_call))
-    }).bind("0.0.0.0:15000")
+    }).bind("0.0.0.0:1300")
         .unwrap()
         .shutdown_timeout(1)
         .start();
 
-    println!("Started Rust service on port 15000...");
+    println!("Started Rust service on port 1300...");
     let _ = sys.run();
 }

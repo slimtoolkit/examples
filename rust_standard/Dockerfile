@@ -1,4 +1,4 @@
-FROM rust:1.31
+FROM rust:1.36
 
 COPY service /opt/my/service
 
@@ -8,5 +8,5 @@ RUN rustc --version && \
 	cargo build --release && \
 	cp target/release/rust-service .
 
-EXPOSE 15000
+EXPOSE 1300
 ENTRYPOINT ["/opt/my/service/rust-service"]
