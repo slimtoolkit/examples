@@ -4,7 +4,7 @@ var Hapi = require('hapi');
 var server = new Hapi.Server();
 server.connection(
 {
-    port: 8000 
+    port: 1300 
 });
 
 server.route(
@@ -14,7 +14,7 @@ server.route(
     handler: function (request, reply) 
     {
        console.log('node service: GET /');
-       reply({status: 'success', info: 'yes!!!', 'service': 'node'});
+       reply({status: 'success', info: 'yes!!!', stack: 'node', framework: 'hapi'});
     }
 });
 

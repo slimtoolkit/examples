@@ -12,7 +12,7 @@ WORKDIR /opt/my/service
 
 RUN npm install
 
-EXPOSE 8000
+EXPOSE 1300
 ENTRYPOINT ["/opt/my/service/docker-entrypoint.sh"]
 
 

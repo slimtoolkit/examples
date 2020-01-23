@@ -4,3 +4,4 @@ _docker-slim.env
 *.pyc
 *.py~
 *.py#
+README.md

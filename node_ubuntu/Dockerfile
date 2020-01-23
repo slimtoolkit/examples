@@ -14,7 +14,7 @@ WORKDIR /opt/my/service
 
 RUN npm install
 
-EXPOSE 8000
+EXPOSE 1300
 ENTRYPOINT ["node","/opt/my/service/server.js"]
 
 
