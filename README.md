@@ -61,6 +61,7 @@ PHP application images:
 Haskell application images:
 
 * (Scotty service) from haskell:8 - 2.09GB => 16.6MB (minified by **125.32X**)
+* (Scotty service) from haskell:7 - 1.5GB => 21MB (minified by **71X**)
 
 Elixir application images:
 
