@@ -3,7 +3,7 @@
 here="$(dirname "$BASH_SOURCE")"
 cd $here
 
-docker-slim build --show-blogs --from-dockerfile Dockerfile .
+docker-slim build --show-blogs --dockerfile Dockerfile .
 
 
 

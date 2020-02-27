@@ -3,7 +3,7 @@
 here="$(dirname "$BASH_SOURCE")"
 cd $here
 
-docker-slim build --from-dockerfile Dockerfile --tag my/python_ubuntu_18_py27_from_dockerfile .
+docker-slim build --dockerfile Dockerfile --tag my/python_ubuntu_18_py27_from_dockerfile .
 
 
 
