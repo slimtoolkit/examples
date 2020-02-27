@@ -13,7 +13,7 @@ WORKDIR /opt/my/service
 
 RUN pip install -r requirements.txt
 
-EXPOSE 9000
+EXPOSE 1300
 ENTRYPOINT ["python","/opt/my/service/server.py"]
 
 
