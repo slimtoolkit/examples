@@ -1,3 +1,5 @@
+require "time"
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -64,5 +66,10 @@ Rails.application.configure do
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
+  end
+
+  config.after_initialize do
+    puts "(prod) app init time:"
+    puts Time.now.utc.to_f
   end
 end
