@@ -9,7 +9,7 @@ dslimexamples/carbon.now.sh.slim                   latest              97697a455
 dslimexamples/carbon.now.sh                        latest              28af7e48e8e7        3 minutes ago        2.06GB
 ```
 
-If you want to do it the hard way take a look at these two blog posts:
+If you want to do it the hard way to learn more about Docker and the complexities you need to deal with take a look at these two blog posts:
 
 * https://lengrand.fr/reducing-dockers-image-size-while-creating-an-offline-version-of-carbon-now-sh/
 * https://lengrand.fr/reducing-our-docker-image-size-further/
