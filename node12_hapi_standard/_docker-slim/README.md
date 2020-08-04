@@ -8,6 +8,7 @@ These helper scripts rely on a set of environment variables defined in the `_doc
 
 * `build_fat.sh` - Builds a (fat/regular) Docker image for the project (Mac OS wrapper: `mac/build_fat.command`).
 * `slim.sh` - Generates a slim/minified Docker image from an existing (fat/regular) Docker image created by `build_fat.sh` or manually (Mac OS wrapper: `mac/slim.command`).
+* `slim_edit.sh` - Just like `slim.sh`, but with extra metadata editing flags
 * `build_and_slim.sh` - This script shows how `docker-slim` can generate the fat and slim images based on your project's Dockerfile eliminating an extra `docker buld` step (Mac OS wrapper: `mac/build_and_slim.command`).
 * `run_fat.sh` - Starts a container from the fat Docker image exposing the default port (1300) to the host environment (Mac OS wrapper: `mac/run_fat.command`).
 * `run_slim.sh` - Starts a container from the slim Docker image exposing the default port (1300) to the host environment (Mac OS wrapper: `mac/run_slim.command`).
