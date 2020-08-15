@@ -3,7 +3,7 @@
 here="$(dirname "$BASH_SOURCE")"
 cd $here/..
 
-docker rmi codeship-python-django-todoapp_web.slim
-docker rmi codeship-python-django-todoapp_web
+docker rmi codeshippythondjangotodoapp_web.slim
+docker rmi codeshippythondjangotodoapp_web
 
 
