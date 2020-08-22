@@ -9,5 +9,5 @@ BDIR="$( cd -P "$( dirname "$SOURCE" )/.." && pwd )"
 pushd $BDIR
 source _docker-slim.env
 
-docker-slim build dslimexamples/$IMAGE_NAME
+docker-slim build --copy-meta-artifacts . dslimexamples/$IMAGE_NAME
 popd
