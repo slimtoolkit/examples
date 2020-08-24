@@ -1,4 +1,3 @@
-here="$(dirname "$BASH_SOURCE")"
-cd $here
+#!/usr/bin/env bash
 
 docker build -f Dockerfile -t mux-go-api-ubuntu .
