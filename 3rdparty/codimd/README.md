@@ -15,7 +15,9 @@ To have a smaller fully working image use the `slim_interactive.sh` to optimize 
 * `slim_crawl.sh` - minify the Docker image you just created (fully scripted and with HTTP crawling enabled)
 * `slim_interactive.sh` - minifies the images, but also requires you to interact with the temporary container it creates
 * `run_slim.sh` - run the optimized version of the container
+* `run_slim_seccomp.sh` - run the optimized version of the container and apply the auto-generated `seccomp` profile
 * `run_fat.sh` - run the original version of the container
+* `run_fat_seccomp.sh` - run the original version of the container and apply the auto-generated `seccomp` profile
 * `open_browser.sh` - open your browser (http://localhost:3000)
 
 

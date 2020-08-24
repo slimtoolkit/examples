@@ -22,7 +22,9 @@ Also compare the Dockerfile in this example to the final Dockerfile in the blog 
 * `build_fat.sh` - build the Docker image
 * `slim.sh` - minify the Docker image you just created
 * `run_slim.sh` - run the optimized version of the container
-* `build_fat.sh` - run the original version of the container
+* `run_slim_seccomp.sh` - run the optimized version of the container and apply the auto-generated `seccomp` profile
+* `run_fat.sh` - run the original version of the container
+* `run_fat_seccomp.sh` - run the original version of the container and apply the auto-generated `seccomp` profile
 * `open_browser.sh` - open your browser (http://localhost:3000)
 
 ## References
