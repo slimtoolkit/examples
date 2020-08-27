@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 here="$(dirname "$BASH_SOURCE")"
 cd $here/..
-./get_spec_json.sh
+./run_debug_sidecar.sh

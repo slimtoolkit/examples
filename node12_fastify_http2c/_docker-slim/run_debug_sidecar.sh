@@ -7,5 +7,7 @@ while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
 BDIR="$( cd -P "$( dirname "$SOURCE" )/.." && pwd )"
 
 pushd $BDIR
-curl http://localhost:1300/spec/yaml
+source _docker-slim.env
+
+docker run --rm -it --pid=container:$CONTAINER_NAME --net=container:$CONTAINER_NAME --cap-add sys_admin alpine sh
 popd

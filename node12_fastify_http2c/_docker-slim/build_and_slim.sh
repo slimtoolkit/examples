@@ -7,5 +7,7 @@ while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
 BDIR="$( cd -P "$( dirname "$SOURCE" )/.." && pwd )"
 
 pushd $BDIR
-curl http://localhost:1300/spec/json
+source _docker-slim.env
+
+docker-slim build --dockerfile Dockerfile --tag-fat dslimexamples/$IMAGE_NAME .
 popd
