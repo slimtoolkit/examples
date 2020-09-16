@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script>
+      let HOST = location.origin.replace(/^http/, 'ws')
+      let ws = new WebSocket(HOST);
+      let el;
+
+      ws.onopen = (event) =>
+      {
+        const id = Math.random().toString(36).substring(8);
+        console.log(`[${id}] ws open -> "${event.type}/${event.timeStamp}"`,);
+        ws.send(`client[id=${id}]`);
+      };
+
+      ws.onerror = (error) =>
+      {
+        console.log(`ws error -> "${error.message}"`);
+      };
+
+      ws.onmessage = (event) => 
+      {
+        console.log('ws message -> "%s"', event.data);
+        el = document.getElementById('server-data');
+        el.innerHTML = 'Server data => ' + event.data;
+      };
+    </script>
+  </head>
+  <body>
+    <p id="server-data"></p>
+  </body>
+</html>

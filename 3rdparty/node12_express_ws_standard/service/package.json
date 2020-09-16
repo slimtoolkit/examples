@@ -1,0 +1,21 @@
+{
+  "name": "websockets-vanilla",
+  "version": "1.0.0",
+  "engines": {
+    "node": "12.x"
+  },
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bufferutil": "^4.0.1",
+    "express": "^4.17.1",
+    "utf-8-validate": "^5.0.2",
+    "ws": "^7.2.0"
+  }
+}
