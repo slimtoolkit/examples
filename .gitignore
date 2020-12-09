@@ -1,2 +1,4 @@
 .DS_Store
 slim.report.json
+**/bin
+**/obj

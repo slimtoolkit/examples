@@ -67,3 +67,8 @@ Elixir application images:
 
 * (Phoenix service) from elixir:1.6 - 1.1GB => 37MB (minified by **29.25X**)
 
+.NET application images:
+
+* from mcr.microsoft.com/dotnet/runtime-deps:5.0-alpine-amd64       - 31MB  => 28MB (minified by **1.11X**)
+* from mcr.microsoft.com/dotnet/runtime-deps:5.0-buster-slim-amd64  - 132MB => 32MB (minified by **4.11X**)
+* from mcr.microsoft.com/dotnet/runtime-deps:5.0-focal-amd64        - 140MB => 32MB (minified by **4.31X**)
