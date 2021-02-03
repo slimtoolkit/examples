@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package message;
+
+message Message {
+  string id = 1;
+  string sender = 2;
+  string receiver = 3;
+  string content = 4;
+}
