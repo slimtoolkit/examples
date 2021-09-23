@@ -1,0 +1,16 @@
+version: '2'
+services:
+  appsvc:
+    build: .
+    image: my/demo-node-compose-service.slim
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+  redis:
+    image: redis:4.0-alpine
+    ports:
+      - "16379:6379"
+
+
+
