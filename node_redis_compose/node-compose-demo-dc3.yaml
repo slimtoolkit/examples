@@ -1,0 +1,23 @@
+version: '3.5'
+services:
+  appsvc:
+    build: .
+    image: my/demo-node-compose-service
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+  redis:
+    image: redis:4.0-alpine
+    ports:
+      - "16379:6379"
+    networks:
+      - default
+      - this
+      - that
+networks:
+  this:
+    name: thisx
+  that:
+  default:
+
