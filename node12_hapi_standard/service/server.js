@@ -1,8 +1,9 @@
 'use strict';
 
-const Hapi = require('@hapi/hapi');
+const hapi = require('@hapi/hapi');
+const fs = require('fs');
 
-const server = Hapi.server(
+const server = hapi.server(
 {
     port: 1300
 });
@@ -14,10 +15,39 @@ server.route(
     handler: (request, h) => 
     {
        console.log('node/hapi service: GET /');
+       console.log('node/hapi service GET / - headers: %s', request.headers);
+       try
+       {
+        fs.appendFileSync('dummyfile', 'GET /\n');
+       } 
+       catch(error)
+       {
+        console.log(error);
+       }
        return {status: 'success', info: 'yes!!!', stack: 'node', framework: 'hapi'};
     }
 });
 
+server.route(
+{
+    method: 'POST',
+    path:'/post', 
+    handler: (request, h) => 
+    {
+       console.log('node/hapi service POST /post');
+       console.log('node/hapi service POST /post - headers: %s', request.headers);
+       console.log('node/hapi service POST /post - body: ', request.payload);
+       try
+       {
+        fs.appendFileSync('dummyfile', 'POST /post\n');
+       } 
+       catch(error)
+       {
+        console.log(error);
+       }
+       return {status: 'success', info: 'yes!!!', stack: 'node', framework: 'hapi'};
+    }
+});
 
 const init = async () => 
 {

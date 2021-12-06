@@ -1,0 +1,12 @@
+{
+  "commands":
+  [
+   {
+   	 "protocol": "http",
+     "method": "POST",
+     "resource": "/post",
+     "body_file": "bodyData.json",
+     "headers": ["Content-Type: application/json"]
+   }
+  ]
+}

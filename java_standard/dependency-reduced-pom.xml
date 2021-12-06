@@ -168,11 +168,11 @@
     </dependency>
   </dependencies>
   <properties>
-    <h2.version>1.4.187</h2.version>
     <dropwizard.version>0.9.0-rc4</dropwizard.version>
     <jersey.version>2.21</jersey.version>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <h2.version>1.4.187</h2.version>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 </project>
 
