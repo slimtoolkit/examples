@@ -1,0 +1,7 @@
+version: '2' #added
+services:
+  web: 
+    build: app 
+    image: django_web #added
+    ports: 
+      - '8000:8000'
