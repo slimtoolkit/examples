@@ -7,13 +7,17 @@ import (
 )
 
 type responseStruct struct {
-	Status      string `json:"status"`
-	Message string `json:"message"`
+	Status    string `json:"status"`
+	Message   string `json:"message"`
+	Stack     string `json:"stack"`
+	Framework string `json:"framework"`
 }
 
 var response = responseStruct{
-	ID:      "Success",
-	Message: "Hello World!",
+	Status:    "success",
+	Message:   "Hello World!",
+	Stack:     "go",
+	Framework: "gin",
 }
 
 func getResponse(c *gin.Context) {
