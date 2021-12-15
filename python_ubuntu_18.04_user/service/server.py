@@ -19,6 +19,6 @@ if __name__ == "__main__":
     app.config['DEBUG'] = True
     api.add_resource(ApiRoot, '/')
 
-    app.run(host='0.0.0.0',port=9000,threaded=True,use_reloader=False)
+    app.run(host='0.0.0.0',port=1300,threaded=True,use_reloader=False)
   except KeyboardInterrupt:
     pass
