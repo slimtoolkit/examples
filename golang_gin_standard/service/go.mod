@@ -1,3 +1,3 @@
-module example/golang_gin_standard
+module github.com/docker-slim/examples/golang_gin_standard
 
-go 1.17
+go 1.15

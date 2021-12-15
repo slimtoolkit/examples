@@ -14,7 +14,7 @@ ENV PATH /usr/lib/go-1.9/bin:/go/bin:/usr/local/bin:$PATH
 
 WORKDIR /app
 ADD . /app
-RUN cd /app && go build -o app
+RUN go build -o app
 
 ENTRYPOINT ["/app/app"]
 
