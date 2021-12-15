@@ -16,5 +16,5 @@ RUN adduser --disabled-password --gecos '' appuser\
   && chown -R appuser:appuser /opt/my/service
 
 USER appuser
-EXPOSE 9000
+EXPOSE 1300
 ENTRYPOINT ["python","/opt/my/service/server.py"]
