@@ -5,8 +5,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def get():
-    result = {'service': 'ubuntu.python', 'python.version': platform.python_version()}
+    result = {'status': 'success', 'message': 'Hello World!', 'framework': 'flask', 'stack': 'python'}
     return json.dumps(result)
 
 if __name__== '__main__':
-    app.run(debug=True,host='0.0.0.0')
+    app.run(debug=True,host='0.0.0.0',port=1300)
