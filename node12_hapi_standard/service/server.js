@@ -24,7 +24,7 @@ server.route(
        {
         console.log(error);
        }
-       return {status: 'success', info: 'yes!!!', stack: 'node', framework: 'hapi'};
+       return {status: 'success', message: 'Hello World!', stack: 'node', framework: 'hapi'};
     }
 });
 

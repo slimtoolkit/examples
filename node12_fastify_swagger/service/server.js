@@ -43,7 +43,7 @@ async (request, reply) =>
   const out =
   { 
   	status: 'success',
-  	info: 'yes!!!',
+  	message: 'Hello World!',
   	stack: 'node',
   	framework: 'fastify'
   };

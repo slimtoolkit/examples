@@ -4,7 +4,7 @@ import platform
 
 class ApiRoot(Resource):
     def get(self):
-      return {'status': 'success', 'info': 'yes!!!', 'framework': 'flask', 'stack': 'python.standard', 'version': platform.python_version()}
+      return {'status': 'success', 'message': 'Hello World!', 'framework': 'flask', 'stack': 'python'}
 
 
 if __name__ == "__main__":

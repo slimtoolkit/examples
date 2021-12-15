@@ -14,7 +14,7 @@ server.route(
     handler: function (request, reply) 
     {
        console.log('node service: GET /');
-       reply({status: 'success', info: 'yes!!!', stack: 'node', framework: 'hapi'});
+       reply({status: 'success', message: 'Hello World!', stack: 'node', framework: 'hapi'});
     }
 });
 

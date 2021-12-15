@@ -23,9 +23,9 @@ use actix_web::{
 #[derive(Debug, Serialize, Deserialize)]
 struct Response {
     status: String,
-    data: String,
-    service: String,
-    version: String
+    message: String,
+    stack: String,
+    framework: String
 }
 
 fn on_call(
@@ -35,9 +35,9 @@ fn on_call(
     let r = Response
     {
         status: "success".to_string(), 
-        data: "yes!".to_string(),
-        service: "rust".to_string(), 
-        version: format!("{}.{}",version().major,version().minor)
+        message: "Hello World!".to_string(),
+        stack: "rust".to_string(), 
+        framework: "actix".to_string()
     };
 
     HttpResponse::Ok().json(r)

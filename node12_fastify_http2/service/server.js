@@ -29,11 +29,11 @@ async (request, reply) =>
   const out =
   { 
   	status: 'success',
-  	info: 'yes!!!',
+  	message: 'Hello World!',
   	stack: 'node.http2',
   	framework: 'fastify'
   };
-
+  
   return out;
 });
 

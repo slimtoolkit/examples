@@ -1,4 +1,4 @@
-FROM rust:1.36
+FROM rust:1.57
 
 COPY service /opt/my/service
 
