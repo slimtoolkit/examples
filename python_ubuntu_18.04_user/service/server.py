@@ -6,11 +6,9 @@ import os
 class ApiRoot(Resource):
     def get(self):
       return {'status': 'success', \
-              'info': 'yes!!!', \
-              'service': 'python.ubuntu-18.04', \
-              'version': platform.python_version(), \
-              'uid': os.getuid()}
-
+              'message': 'Hello World!', \
+              'framework': 'flask', \
+              'stack': 'python'}
 
 if __name__ == "__main__":
   try:
