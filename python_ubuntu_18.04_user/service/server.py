@@ -6,11 +6,9 @@ import os
 class ApiRoot(Resource):
     def get(self):
       return {'status': 'success', \
-              'info': 'yes!!!', \
-              'service': 'python.ubuntu-18.04', \
-              'version': platform.python_version(), \
-              'uid': os.getuid()}
-
+              'message': 'Hello World!', \
+              'framework': 'flask', \
+              'stack': 'python'}
 
 if __name__ == "__main__":
   try:
@@ -19,6 +17,6 @@ if __name__ == "__main__":
     app.config['DEBUG'] = True
     api.add_resource(ApiRoot, '/')
 
-    app.run(host='0.0.0.0',port=9000,threaded=True,use_reloader=False)
+    app.run(host='0.0.0.0',port=1300,threaded=True,use_reloader=False)
   except KeyboardInterrupt:
     pass

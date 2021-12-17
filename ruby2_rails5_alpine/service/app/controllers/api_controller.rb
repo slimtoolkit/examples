@@ -1,5 +1,5 @@
 class ApiController < ApplicationController
   def index
-  	render json: {:status => 'success', :info => "running", :service => "rails", :stack => 'ruby'}
+  	render json: {:status => 'success', :info => "running", :framework => "rails", :stack => 'ruby'}
   end
 end

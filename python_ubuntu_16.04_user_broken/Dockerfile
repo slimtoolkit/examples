@@ -1,0 +1,20 @@
+FROM ubuntu:16.04
+
+RUN apt-get update && \
+		apt-get -y install python-software-properties python g++ make && \
+		apt-get -y install python-dev && \
+		apt-get -y install python-pip && \
+		mkdir -p /opt/my/service
+
+COPY service /opt/my/service
+
+WORKDIR /opt/my/service
+
+RUN pip install -r requirements.txt
+
+RUN adduser --disabled-password --gecos '' appuser\  
+  && chown -R appuser:appuser /opt/my/service
+
+USER appuser
+EXPOSE 1300
+ENTRYPOINT ["python","/opt/my/service/server.py"]
