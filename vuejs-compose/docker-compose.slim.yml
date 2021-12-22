@@ -1,0 +1,6 @@
+version: '2'
+services:
+  web: 
+    image: vuejs_web:latest
+    ports: 
+      - '1300:1300'
