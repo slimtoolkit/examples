@@ -5,6 +5,3 @@ services:
     image: vuejs_web
     ports:
       - 80:80
-    volumes:
-      - ./vuejs:/project
-      - /project/node_modules
