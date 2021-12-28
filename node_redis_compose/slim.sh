@@ -3,6 +3,6 @@
 here="$(dirname "$BASH_SOURCE")"
 cd $here
 
-docker-slim build --target-compose-svc appsvc --compose-file node-compose-demo.yaml
+docker-slim build --target-compose-svc appsvc --compose-file compose.yaml
 
 

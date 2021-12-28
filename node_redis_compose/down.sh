@@ -3,7 +3,7 @@
 here="$(dirname "$BASH_SOURCE")"
 cd $here
 
-docker-compose -f node-compose-demo.yaml down
+docker-compose -f compose.yaml down
 
 
 
