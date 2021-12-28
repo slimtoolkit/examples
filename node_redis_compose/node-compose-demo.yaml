@@ -2,7 +2,7 @@ version: '2'
 services:
   appsvc:
     build: .
-    image: my/demo-node-compose-service
+    image: dslimexamples/node-redis-compose-service
     ports:
       - "8008:8000"
     depends_on:

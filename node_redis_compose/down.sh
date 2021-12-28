@@ -3,7 +3,7 @@
 here="$(dirname "$BASH_SOURCE")"
 cd $here
 
-docker build -t dslimexamples/node-redis-compose-service .
+docker-compose -f node-compose-demo.yaml down
 
 
 
