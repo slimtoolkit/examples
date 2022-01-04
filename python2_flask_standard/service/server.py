@@ -1,10 +1,11 @@
 from flask import Flask
+import flask
 from flask_restful import Resource, Api
 import platform
 
 class ApiRoot(Resource):
     def get(self):
-      return {'status': 'success', 'message': 'Hello World!', 'framework': 'flask', 'stack': 'python'}
+      return {'status': 'success', 'message': 'Hello World!', 'framework': 'flask', 'frameworkversion': flask.__version__,'stack': 'python', 'stackversion': platform.python_version(), 'packagemanager': 'pip', 'baseimageversion': 'Debian 9 (stretch)'}
 
 
 if __name__ == "__main__":

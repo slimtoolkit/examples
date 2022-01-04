@@ -25,7 +25,11 @@ struct Response {
     status: String,
     message: String,
     stack: String,
-    framework: String
+    stackversion: String,
+    framework: String,
+    frameworkversion: String,
+    packagemanager: String,
+    baseimageversion: String
 }
 
 fn on_call(
@@ -37,7 +41,11 @@ fn on_call(
         status: "success".to_string(), 
         message: "Hello World!".to_string(),
         stack: "rust".to_string(), 
-        framework: "actix".to_string()
+        framework: "actix".to_string(),
+        stackversion: "1.57".to_string(),
+        frameworkversion: "0.7".to_string(),
+        packagemanager: "Cargo".to_string(),
+        baseimageversion: "Debian 11 (bullseye)".to_string()
     };
 
     HttpResponse::Ok().json(r)

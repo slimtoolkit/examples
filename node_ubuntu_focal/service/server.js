@@ -14,7 +14,7 @@ server.route(
     handler: function (request, reply) 
     {
        console.log('node service: GET /');
-       reply({status: 'success', message: 'Hello World!', stack: 'node', framework: 'hapi'});
+       reply({status: 'success', message: 'Hello World', stack: 'node', stackversion: process.version,framework: 'hapi', frameworkversion: Hapi.frameworkversion, packagemanager: "npm", baseimageversion: "Ubuntu 20.04"});
     }
 });
 

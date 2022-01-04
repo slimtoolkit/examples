@@ -24,7 +24,7 @@ server.route(
        {
         console.log(error);
        }
-       return {status: 'success', message: 'Hello World!', stack: 'node', framework: 'hapi'};
+       return {status: 'success', message: 'Hello World', stack: 'node', stackversion: process.version,framework: 'hapi', frameworkversion: server.version, packagemanager: "npm", baseimageversion: "Debian 9 (stretch)"};
     }
 });
 

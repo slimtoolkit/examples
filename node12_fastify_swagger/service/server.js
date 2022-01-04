@@ -45,7 +45,11 @@ async (request, reply) =>
   	status: 'success',
   	message: 'Hello World!',
   	stack: 'node',
-  	framework: 'fastify'
+  	framework: 'fastify',
+    frameworkversion: "3",
+    stackversion: process.version,
+    packagemanager: 'npm', 
+    baseimageversion: 'Ubuntu 21.10'
   };
 
   return out;
