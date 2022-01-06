@@ -6,5 +6,5 @@ set :bind, '0.0.0.0'
 set :port, 1300
 
 get '/', :provides => :json do
-  {:status => 'success',:message => 'Hello World!', :stack => 'ruby', :framework => 'sinatra'}.to_json
+  {:status => 'success', :info => "running", :framework => "sinatra", :stack => 'ruby', :stackversion => '2', :PackageManager => 'gem', :baseimageversion => "Alpine v3.11"}.to_json
 end

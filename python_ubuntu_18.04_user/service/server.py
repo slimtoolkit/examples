@@ -1,4 +1,5 @@
 from flask import Flask
+import flask
 from flask_restful import Resource, Api
 import platform
 import os
@@ -8,7 +9,11 @@ class ApiRoot(Resource):
       return {'status': 'success', \
               'message': 'Hello World!', \
               'framework': 'flask', \
-              'stack': 'python'}
+              'frameworkversion': flask.__version__, \
+              'stack': 'python', \
+              'stackversion': platform.python_version(), \
+              'packagemanager': 'pip', \
+              'baseimageversion': 'Ubuntu 18.04'}
 
 if __name__ == "__main__":
   try:

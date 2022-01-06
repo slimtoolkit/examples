@@ -9,17 +9,25 @@ import (
 )
 
 type responseStruct struct {
-	Status    string `json:"status"`
-	Message   string `json:"message"`
-	Stack     string `json:"stack"`
-	Framework string `json:"framework"`
+	Status           string `json:"status"`
+	Message          string `json:"message"`
+	Stack            string `json:"stack"`
+	StackVersion     string `json:"stackversion"`
+	Framework        string `json:"framework"`
+	FrameworkVersion string `json:"frameworkversion"`
+	BaseImageVersion string `json:"baseimageversion"`
+	PackageManager   string `json:"packagemanager"`
 }
 
 var response = responseStruct{
-	Status:    "success",
-	Message:   "Hello World!",
-	Stack:     "go",
-	Framework: "gin",
+	Status:           "success",
+	Message:          "Hello World!",
+	Stack:            "go",
+	Framework:        "gin",
+	StackVersion:     runtime.Version(),
+	FrameworkVersion: gin.Version,
+	BaseImageVersion: "Debian 10 (buster)",
+	PackageManager:   "GOLang",
 }
 
 func getResponse(c *gin.Context) {
