@@ -1,0 +1,22 @@
+frameworkVersion: '2'
+
+service: aws-node-express-api
+
+custom:
+  awsAccount: ${env:AWS_ACCOUNT}
+  serverImageBaseName: ${env:SERVER_IMAGE_BASE_NAME, self:service}
+  gitRevision: ${env:GIT_REVISION, 'latest'}
+  awsRegion: ${env:AWS_REGION, 'us-west-2'}
+
+provider:
+  name: aws
+  region: ${self:custom.awsRegion}
+  runtime: nodejs14.x
+
+functions:
+  api:
+    image:
+      uri: ${self:custom.awsAccount}.dkr.ecr.${self:custom.awsRegion}.amazonaws.com/${self:custom.serverImageBaseName}:${self:custom.gitRevision}
+    name: ${self:service}-server
+    events:
+      - httpApi: '*'
