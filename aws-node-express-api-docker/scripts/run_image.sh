@@ -7,6 +7,7 @@ while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
 CDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 BDIR="$( cd -P "$( dirname "$SOURCE" )/.." && pwd )"
 
+pushd ${BDIR}
 source _app.env
 
 printf "RUN IMAGE [START]\n"
@@ -30,3 +31,4 @@ docker run -it --rm -p 9000:8080 \
            ${IMAGE_NAME}:${GIT_REVISION}
 
 printf "RUN IMAGE LOCAL [DONE]\n"
+popd

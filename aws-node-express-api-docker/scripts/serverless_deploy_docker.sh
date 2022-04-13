@@ -22,6 +22,6 @@ printf "AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}\n"
 [[ -z "${AWS_SECRET_ACCESS_KEY:-}" ]] && { echo "AWS_SECRET_ACCESS_KEY is not set"; exit 1; }
 
 printf "Deploying...\n"
-serverless deploy
+docker run -it -e AWS_ACCOUNT=${AWS_ACCOUNT} -e AWS_REGION=${AWS_REGION} -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} -v $(pwd):/project --workdir /project qserverless deploy
 printf "SLS DEPLOY [DONE]\n"
 popd

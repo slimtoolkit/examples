@@ -7,6 +7,7 @@ while [ -h "$SOURCE" ] ; do SOURCE="$(readlink "$SOURCE")"; done
 CDIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 BDIR="$( cd -P "$( dirname "$SOURCE" )/.." && pwd )"
 
+pushd ${BDIR}
 source _app.env
 
 printf "BUILD IMAGE [START]\n"
@@ -28,3 +29,4 @@ docker build -t ${IMAGE_NAME}:${GIT_REVISION} .
 popd
 
 printf "BUILD IMAGE [DONE]\n"
+popd
