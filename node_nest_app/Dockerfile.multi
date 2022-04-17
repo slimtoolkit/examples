@@ -1,0 +1,21 @@
+FROM node:17-alpine AS base
+EXPOSE 3000
+
+FROM base as development
+WORKDIR /app
+COPY ./src ./src
+COPY package.json package-lock.json tsconfig.build.json tsconfig.json .eslintrc.js .prettierrc ./
+RUN npm i
+RUN npm run build
+EXPOSE 3000
+CMD ["sh", "-c", "npm run start:dev"]
+
+FROM base AS production
+WORKDIR /app
+COPY --from=development /app/dist ./dist
+COPY --from=pruned /app/package.json /app/package-lock.json ./
+COPY --from=pruned /app/node_modules ./node_modules
+EXPOSE 3000
+CMD ["sh", "-c", "npm run start:prod"]
+
+#NOTE: this Dockerfile is for a repro
