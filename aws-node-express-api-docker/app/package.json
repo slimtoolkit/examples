@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
+    "axios": "^0.27.2",
     "express": "^4.17.1",
     "serverless-http": "^2.7.0"
   }

@@ -9,6 +9,7 @@ BDIR="$( cd -P "$( dirname "$SOURCE" )/.." && pwd )"
 
 pushd ${BDIR}
 source _app.env
+source _docker-slim.env
 
 printf "RUN IMAGE [START]\n"
 
@@ -27,7 +28,10 @@ IMAGE_NAME=${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/${SERVER_IMAGE_BAS
 printf "Running container image - ${IMAGE_NAME}:${GIT_REVISION}\n"
 
 docker run -it --rm -p 9000:8080 \
+            --rm --security-opt seccomp=unconfined \
+            --entrypoint $SHELL_NAME \
             -e NODE_ENV=production \
+            --name $CONTAINER_NAME \
            ${IMAGE_NAME}:${GIT_REVISION}
 
 printf "RUN IMAGE LOCAL [DONE]\n"

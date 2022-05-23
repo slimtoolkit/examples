@@ -4,5 +4,6 @@ FROM public.ecr.aws/lambda/nodejs:14
 COPY *.json ./
 RUN npm ci
 COPY app.js ./
+EXPOSE 8080
 
 CMD ["app.handler"]
