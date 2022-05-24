@@ -14,7 +14,7 @@ server:
 #  hardNofileLimit: 1000
   applicationConnectors:
     - type: http
-      port: 8080
+      port: 1300
     - type: https
       port: 8443
       keyStorePath: service.keystore
