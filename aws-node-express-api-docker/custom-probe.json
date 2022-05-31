@@ -1,0 +1,22 @@
+{
+    "commands": [
+        {
+            "resource": "/2015-03-31/functions/function/invocations",
+            "method": "POST",
+            "body": "{\"httpMethodq\":\"GET\", \"path\":\"/hello\", \"headers\": {\"User-Agent\": \"custom UA\"}}",
+            "protocol": "http"
+        },
+        {
+            "resource": "/2015-03-31/functions/function/invocations",
+            "method": "POST",
+            "body": "{\"httpMethod\":\"POST\", \"path\":\"/stuff\", \"body\":\"{\"key\":\"val data\"}\", \"headers\": {\"Content-Type\": \"application/json\"}}",
+            "protocol": "http"
+        },
+        {
+            "resource": "/2015-03-31/functions/function/invocations",
+            "method": "POST",
+            "body": "{\"httpMethod\":\"GET\", \"path\":\"/get\", \"headers\": {\"User-Agent\": \"custom UA\"}}",
+            "protocol": "http"
+        }
+    ]
+}
