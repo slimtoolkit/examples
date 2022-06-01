@@ -1,7 +1,5 @@
 # Go Gin Web Service using standard `golang` image
 
-NOTE: This example doesn't work on arm64 Apple silicon chips (_aka_ M1).
-
 Commands:
 
 ```sh

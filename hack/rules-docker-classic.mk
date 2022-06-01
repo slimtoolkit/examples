@@ -2,7 +2,7 @@ HACK_DIR=${EXAMPLE_DIR}/../hack
 
 include ${HACK_DIR}/common.mk
 
-DSLIM_COMMON_BUILD_FLAGS ?=
+DSLIM_EXTRA_BUILD_FLAGS ?=
 DOCKER_RUN_MODE ?= --detach
 
 
@@ -47,33 +47,33 @@ slim-build: EXPECTED_IMAGE_NAME=dslimexamples/${IMAGE_NAME}.slim
 slim-build: EXPECTED_IMAGE_SIZE=${EXPECTED_IMAGE_SIZE_SLIM_${ARCH}}
 slim-build:
 	@echo "${GREEN}Building Slim Image${RESET}"
-	docker-slim build ${DSLIM_COMMON_BUILD_FLAGS} dslimexamples/${IMAGE_NAME}
+	docker-slim build ${DSLIM_EXTRA_BUILD_FLAGS} dslimexamples/${IMAGE_NAME}
 	$(print_validate_image_size)
 
 .PHONY:
 slim-build-debug:
 	@echo "${GREEN}Building Slim Image (debug mode)${RESET}"
-	docker-slim --debug build ${DSLIM_COMMON_BUILD_FLAGS} --show-clogs dslimexamples/${IMAGE_NAME}
+	docker-slim --debug build ${DSLIM_EXTRA_BUILD_FLAGS} --show-clogs dslimexamples/${IMAGE_NAME}
 
 .PHONY:
 slim-build-dockerized:
 	@echo "${GREEN}Building Slim Image (dockerized)${RESET}"
-	docker run -it --rm --volume /var/run/docker.sock:/var/run/docker.sock dslim/docker-slim build ${DSLIM_COMMON_BUILD_FLAGS} dslimexamples/${IMAGE_NAME}
+	docker run -it --rm --volume /var/run/docker.sock:/var/run/docker.sock dslim/docker-slim build ${DSLIM_EXTRA_BUILD_FLAGS} dslimexamples/${IMAGE_NAME}
 
 .PHONY:
 slim-build-from-dockerfile:
 	@echo "${GREEN}Building Slim Image Using Fat Dockerfile${RESET}"
-	docker-slim build ${DSLIM_COMMON_BUILD_FLAGS} --dockerfile Dockerfile --tag-fat dslimexamples/${IMAGE_NAME} ${EXAMPLE_DIR}
+	docker-slim build ${DSLIM_EXTRA_BUILD_FLAGS} --dockerfile Dockerfile --tag-fat dslimexamples/${IMAGE_NAME} ${EXAMPLE_DIR}
 
 .PHONY:
 slim-build-with-shell-and-exe:
 	@echo "${GREEN}Building Slim Image with Extra Shell and Exe${RESET}"
-	docker-slim build ${DSLIM_COMMON_BUILD_FLAGS} --include-shell --include-exe uname dslimexamples/${IMAGE_NAME}
+	docker-slim build ${DSLIM_EXTRA_BUILD_FLAGS} --include-shell --include-exe uname dslimexamples/${IMAGE_NAME}
 
 .PHONY:
 slim-build-artifacts:
 	@echo "${GREEN}Building Slim Image and Saving Artifacts${RESET}"
-	docker-slim --report ${IMAGE_NAME}.slim.report.json build ${DSLIM_COMMON_BUILD_FLAGS} --copy-meta-artifacts ${EXAMPLE_DIR} dslimexamples/${IMAGE_NAME}
+	docker-slim --report ${IMAGE_NAME}.slim.report.json build ${DSLIM_EXTRA_BUILD_FLAGS} --copy-meta-artifacts ${EXAMPLE_DIR} dslimexamples/${IMAGE_NAME}
 
 .PHONY:
 slim-push:

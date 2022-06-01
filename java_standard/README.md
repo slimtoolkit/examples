@@ -1,4 +1,4 @@
-# Java Dropwizard Web Service using `amazoncorretto` image
+# Java Dropwizard Web Service using standard `openjdk` image
 
 Commands:
 
