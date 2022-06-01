@@ -1,7 +1,7 @@
 .DS_Store
-_docker-slim/
-_docker-slim.env
 *.pyc
 *.py~
 *.py#
+_macos
+_docker-slim.env
 README.md

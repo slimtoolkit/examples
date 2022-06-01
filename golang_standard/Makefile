@@ -1,36 +1,16 @@
-default: build_fat
+EXAMPLE_DIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
-build_fat:
-	'$(CURDIR)/_docker-slim/build_fat.sh'
+include ${EXAMPLE_DIR}/_docker-slim.env
+export
 
-slim:
-	'$(CURDIR)/_docker-slim/slim.sh'
 
-slim_dockerized:
-	'$(CURDIR)/_docker-slim/slim_dockerized.sh'
+.PHONY:
+default: fat-build slim-build slim-run-interactive
 
-run_fat:
-	'$(CURDIR)/_docker-slim/run_fat.sh'
+.PHONY:
+test-e2e:
+	${MAKE} -f $(realpath $(firstword $(MAKEFILE_LIST))) test-slim-build-cli
+	${MAKE} -f $(realpath $(firstword $(MAKEFILE_LIST))) test-slim-build-cli-from-dockerfile
 
-run_slim:
-	'$(CURDIR)/_docker-slim/run_slim.sh'
 
-test:
-	'$(CURDIR)/_docker-slim/test.sh'
-
-stop:
-	'$(CURDIR)/_docker-slim/stop.sh'
-
-cleanup:
-	'$(CURDIR)/_docker-slim/cleanup.sh'
-
-run_debug_sidecar:
-	'$(CURDIR)/_docker-slim/run_debug_sidecar.sh'
-
-exec_shell:
-	'$(CURDIR)/_docker-slim/exec_shell.sh'
-
-build_and_slim:
-	'$(CURDIR)/_docker-slim/build_and_slim.sh'
-
-.PHONY: default build_fat slim slim_dockerized run_fat run_slim test stop cleanup run_debug_sidecar exec_shell build_and_slim
+include ${EXAMPLE_DIR}/../hack/rules-docker-classic.mk

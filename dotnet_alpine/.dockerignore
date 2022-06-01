@@ -1,5 +1,5 @@
 .DS_Store
-_docker-slim/
+_macos/
 _docker-slim.env
 **/bin
 **/obj
