@@ -1,4 +1,4 @@
-# Java Dropwizard Web Service using standard `openjdk` image
+# PHP-FPM Web Service using standard `php:7-fpm` image extended with Nginx proxy
 
 Commands:
 

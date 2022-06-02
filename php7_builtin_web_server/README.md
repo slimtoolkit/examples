@@ -1,4 +1,4 @@
-# Java Dropwizard Web Service using standard `openjdk` image
+# PHP Web Service using built-in dev server from the official `php:7-cli` image
 
 Commands:
 
