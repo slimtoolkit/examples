@@ -1,4 +1,4 @@
-HACK_DIR=${EXAMPLE_DIR}/../hack
+HACK_DIR ?= ${EXAMPLE_DIR}/../hack
 
 include ${HACK_DIR}/common.mk
 
