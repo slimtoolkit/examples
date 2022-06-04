@@ -1,7 +1,5 @@
 # Go Gin Web Service using standard `golang` image
 
-NOTE: This example doesn't work on arm64 Apple silicon chips (_aka_ M1).
-
 Commands:
 
 ```sh
@@ -18,6 +16,8 @@ make slim-validate               # send a request to the running web service
 make slim-stop                   # stop the running web service
 
 make slim-build-from-dockerfile  # build the "slim" version of the image using the "fat" Dockerfile
+
+make debug-sidecar               # run a debug sidecar container with an interactive shell
 
 make test-e2e                    # run the acceptance test suite
 make clean                       # remove all artifacts created by this example

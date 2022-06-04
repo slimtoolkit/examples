@@ -22,14 +22,27 @@ endif
 
 ARCH ?= $(shell uname -m)
 
+API_PROTO ?= HTTP
+API_HOST ?= 127.0.0.1
 API_PORT ?= 1300
 API_PATH ?= /
 
+ifeq (${API_PROTO},FastCGI)
+
+# FastCGI probe
+define query-running-service
+# TODO: The `docker-slim probe` command is actually NOOP at the moment.
+@docker-slim probe ${API_HOST}:${API_PORT}/${API_PATH}
+endef
+
+else
+
+# HTTP probe
 define query-running-service
 @echo "${GREEN}Validating Container ${CONTAINER_NAME}${RESET}"
 @for i in 1 2 3 ; do \
     echo "Attempt $$i"; \
-    if curl -vvv --fail --connect-timeout 10 --max-time 10 --retry 10 --retry-delay 1 --retry-connrefused http://127.0.0.1:${API_PORT}/${API_PATH}; then \
+    if curl -vvv --fail --connect-timeout 10 --max-time 10 --retry 10 --retry-delay 1 --retry-connrefused http://${API_HOST}:${API_PORT}/${API_PATH}; then \
         echo "${GREEN}Passed!${RESET}"; \
         break; \
     fi; \
@@ -41,6 +54,8 @@ define query-running-service
     sleep 5; \
 done
 endef
+
+endif
 
 define print_validate_image_size
 @echo "${GREEN}Checking Image ${EXPECTED_IMAGE_NAME}..."

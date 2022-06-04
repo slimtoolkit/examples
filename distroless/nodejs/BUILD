@@ -16,7 +16,7 @@ container_image(
     base = "//experimental/nodejs:nodejs",
     cmd = ["hello_http.js"],
     files = [":hello_http.js"],
-    ports = ["8000"],
+    ports = ["1300"],
 )
 
 load("@io_bazel_rules_docker//contrib:test.bzl", "container_test")
