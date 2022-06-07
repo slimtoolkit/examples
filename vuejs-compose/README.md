@@ -10,7 +10,7 @@ make fat-run                     # run the compose file using the "fat" image
 make fat-validate                # send a request to the running web service
 make fat-stop                    # stop the running web service
 
-make slim-build                  # turn the "fat" image into a "slim" one
+make slim-build-compose          # turn the "fat" image into a "slim" one using docker-compose file
 make slim-run                    # run the compose file using the "slim" image
 make slim-validate               # send a request to the running web service
 make slim-stop                   # stop the running web service

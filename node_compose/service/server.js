@@ -17,7 +17,7 @@ rclient.on('error', (err) =>
 
 const server = Hapi.server(
 {
-    port: 8000
+    port: 1300
 });
 
 server.route(

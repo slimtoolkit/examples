@@ -1,4 +1,5 @@
 .DS_Store
+_macos/
+_docker-slim.env
 node_modules
-
-
+README.md
