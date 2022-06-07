@@ -2,6 +2,11 @@ HACK_DIR ?= ${EXAMPLE_DIR}/../hack
 
 include ${HACK_DIR}/common.mk
 
+DSLIM_EXTRA_BUILD_FLAGS ?=
+
+COMPOSE_FILE_FAT ?= ${EXAMPLE_DIR}/docker-compose.yaml
+COMPOSE_FILE_SLIM ?= ${EXAMPLE_DIR}/docker-compose.slim.yaml
+
 
 .PHONY:
 fat-build: EXPECTED_IMAGE_NAME=dslimexamples/${IMAGE_NAME}
@@ -26,11 +31,24 @@ fat-stop:
 	docker compose -f ${COMPOSE_FILE_FAT} stop
 
 .PHONY:
+dep-run:
+	@echo "${GREEN}Running Dependencies Only${RESET}"
+	docker compose -f ${COMPOSE_FILE_FAT} up --detach --wait ${COMPOSE_DEPENDENCY_SVC}
+
+.PHONY:
 slim-build: EXPECTED_IMAGE_NAME=dslimexamples/${IMAGE_NAME}.slim
 slim-build: EXPECTED_IMAGE_SIZE=${EXPECTED_IMAGE_SIZE_SLIM_${ARCH}}
 slim-build:
 	@echo "${GREEN}Building Slim Image${RESET}"
-	docker-slim build --target-compose-svc web --compose-file ${COMPOSE_FILE_FAT} --show-clogs
+	docker-slim build ${DSLIM_EXTRA_BUILD_FLAGS} dslimexamples/${IMAGE_NAME}
+	$(print_validate_image_size)
+
+.PHONY:
+slim-build-compose: EXPECTED_IMAGE_NAME=dslimexamples/${IMAGE_NAME}.slim
+slim-build-compose: EXPECTED_IMAGE_SIZE=${EXPECTED_IMAGE_SIZE_SLIM_${ARCH}}
+slim-build-compose:
+	@echo "${GREEN}Building Slim Image From Compose File${RESET}"
+	docker-slim build ${DSLIM_EXTRA_BUILD_FLAGS} --target-compose-svc ${COMPOSE_TARGET_SVC} --compose-file ${COMPOSE_FILE_FAT}
 	$(print_validate_image_size)
 
 .PHONY:
@@ -48,7 +66,10 @@ slim-stop:
 	docker compose -f ${COMPOSE_FILE_SLIM} stop
 
 .PHONY:
-test-slim-build: fat-build fat-run fat-validate fat-stop slim-build slim-run slim-validate slim-stop clean
+test-slim-build: fat-build fat-run fat-validate fat-stop dep-run slim-build slim-run slim-validate slim-stop clean
+
+.PHONY:
+test-slim-build-compose: fat-build fat-run fat-validate fat-stop slim-build-compose slim-run slim-validate slim-stop clean
 
 .PHONY:
 clean:
