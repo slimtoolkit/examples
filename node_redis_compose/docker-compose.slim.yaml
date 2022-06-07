@@ -3,7 +3,7 @@ services:
   appsvc:
     image: dslimexamples/node-redis-compose-service.slim
     ports:
-      - "8008:8000"
+      - "1300:1300"
     depends_on:
       - redis
   redis:
