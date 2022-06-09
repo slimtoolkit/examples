@@ -1,4 +1,4 @@
-# Simple Vue.js Web Application using Docker Compose
+# Service with a Redis Data Store - an Example of Minifying Images with Dependencies
 
 Commands:
 

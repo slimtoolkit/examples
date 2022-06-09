@@ -5,11 +5,11 @@ export
 
 
 .PHONY:
-default: fat-build slim-build-compose slim-run slim-validate
+default: fat-build dep-run slim-build slim-run slim-validate
 
 .PHONY:
 test-e2e:
-	${MAKE} -f $(realpath $(firstword $(MAKEFILE_LIST))) test-slim-build-compose
+	${MAKE} -f $(realpath $(firstword $(MAKEFILE_LIST))) test-slim-build
 
 
 include ${EXAMPLE_DIR}/../hack/rules-docker-compose.mk

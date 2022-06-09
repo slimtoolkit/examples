@@ -1,7 +1,8 @@
 version: '2'
 services:
-  service:
-    image: dslimexamples/node-compose-service.slim
+  appsvc:
+    build: .
+    image: dslimexamples/node-redis-compose-service
     ports:
       - "1300:1300"
     depends_on:
