@@ -12,7 +12,7 @@ fat-build: EXPECTED_IMAGE_SIZE=${EXPECTED_IMAGE_SIZE_FAT_${ARCH}}
 fat-build:
 	@echo "${GREEN}Building Fat Image${RESET}"
 	docker compose -f ${COMPOSE_FILE_FAT} build
-	$(print_validate_image_size)
+	$(assert_image_size)
 
 .PHONY:
 fat-run:
@@ -38,16 +38,16 @@ slim-build: EXPECTED_IMAGE_NAME=dslimexamples/${IMAGE_NAME}.slim
 slim-build: EXPECTED_IMAGE_SIZE=${EXPECTED_IMAGE_SIZE_SLIM_${ARCH}}
 slim-build:
 	@echo "${GREEN}Building Slim Image${RESET}"
-	docker-slim ${DSLIM_EXTRA_FLAGS} build ${DSLIM_EXTRA_BUILD_FLAGS} dslimexamples/${IMAGE_NAME}
-	$(print_validate_image_size)
+	docker-slim ${DSLIM_EXTRA_FLAGS} build ${DSLIM_BUILD_EXTRA_FLAGS} dslimexamples/${IMAGE_NAME}
+	$(assert_image_size)
 
 .PHONY:
 slim-build-compose: EXPECTED_IMAGE_NAME=dslimexamples/${IMAGE_NAME}.slim
 slim-build-compose: EXPECTED_IMAGE_SIZE=${EXPECTED_IMAGE_SIZE_SLIM_${ARCH}}
 slim-build-compose:
 	@echo "${GREEN}Building Slim Image From Compose File${RESET}"
-	docker-slim ${DSLIM_EXTRA_FLAGS} build ${DSLIM_EXTRA_BUILD_FLAGS} --target-compose-svc ${COMPOSE_TARGET_SVC} --compose-file ${COMPOSE_FILE_FAT}
-	$(print_validate_image_size)
+	docker-slim ${DSLIM_EXTRA_FLAGS} build ${DSLIM_BUILD_EXTRA_FLAGS} --target-compose-svc ${COMPOSE_TARGET_SVC} --compose-file ${COMPOSE_FILE_FAT}
+	$(assert_image_size)
 
 .PHONY:
 slim-run:
