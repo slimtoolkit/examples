@@ -2,7 +2,8 @@ HACK_DIR ?= ${EXAMPLE_DIR}/../hack
 
 include ${HACK_DIR}/common.mk
 
-DSLIM_EXTRA_BUILD_FLAGS ?=
+# TODO: Investigate why using an abs path here (seems) to break the `docker-slim build` command.
+DOCKERFILE ?= Dockerfile
 DOCKER_RUN_MODE ?= --detach
 
 
@@ -23,6 +24,10 @@ fat-push:
 fat-run:
 	@echo "${GREEN}Running Fat Image${RESET}"
 	docker run --rm ${DOCKER_RUN_MODE} --publish ${API_PORT}:${API_PORT} --name ${CONTAINER_NAME} dslimexamples/${IMAGE_NAME}
+
+.PHONY:
+fat-run-seccomp:
+	docker run --rm ${DOCKER_RUN_MODE} --publish ${API_PORT}:${API_PORT} --security-opt seccomp=${EXAMPLE_DIR}/dslimexamples-${IMAGE_NAME}-seccomp.json --name ${CONTAINER_NAME} dslimexamples/${IMAGE_NAME}
 
 .PHONY:
 fat-run-interactive:
@@ -47,33 +52,33 @@ slim-build: EXPECTED_IMAGE_NAME=dslimexamples/${IMAGE_NAME}.slim
 slim-build: EXPECTED_IMAGE_SIZE=${EXPECTED_IMAGE_SIZE_SLIM_${ARCH}}
 slim-build:
 	@echo "${GREEN}Building Slim Image${RESET}"
-	docker-slim build ${DSLIM_EXTRA_BUILD_FLAGS} dslimexamples/${IMAGE_NAME}
+	docker-slim ${DSLIM_EXTRA_FLAGS} build ${DSLIM_EXTRA_BUILD_FLAGS} dslimexamples/${IMAGE_NAME}
 	$(print_validate_image_size)
 
 .PHONY:
-slim-build-debug:
+slim-build-verbose:
 	@echo "${GREEN}Building Slim Image (debug mode)${RESET}"
-	docker-slim --debug build ${DSLIM_EXTRA_BUILD_FLAGS} --show-clogs dslimexamples/${IMAGE_NAME}
+	docker-slim ${DSLIM_EXTRA_FLAGS} --debug build ${DSLIM_EXTRA_BUILD_FLAGS} --show-clogs dslimexamples/${IMAGE_NAME}
 
 .PHONY:
 slim-build-dockerized:
 	@echo "${GREEN}Building Slim Image (dockerized)${RESET}"
-	docker run -it --rm --volume /var/run/docker.sock:/var/run/docker.sock dslim/docker-slim build ${DSLIM_EXTRA_BUILD_FLAGS} dslimexamples/${IMAGE_NAME}
+	docker run -it --rm --volume /var/run/docker.sock:/var/run/docker.sock dslim/docker-slim ${DSLIM_EXTRA_FLAGS} build ${DSLIM_EXTRA_BUILD_FLAGS} dslimexamples/${IMAGE_NAME}
 
 .PHONY:
 slim-build-from-dockerfile:
 	@echo "${GREEN}Building Slim Image Using Fat Dockerfile${RESET}"
-	docker-slim build ${DSLIM_EXTRA_BUILD_FLAGS} --dockerfile Dockerfile --tag-fat dslimexamples/${IMAGE_NAME} ${EXAMPLE_DIR}
+	docker-slim ${DSLIM_EXTRA_FLAGS} build ${DSLIM_EXTRA_BUILD_FLAGS} --dockerfile ${DOCKERFILE} --tag-fat dslimexamples/${IMAGE_NAME} ${EXAMPLE_DIR}
 
 .PHONY:
 slim-build-with-shell-and-exe:
 	@echo "${GREEN}Building Slim Image with Extra Shell and Exe${RESET}"
-	docker-slim build ${DSLIM_EXTRA_BUILD_FLAGS} --include-shell --include-exe uname dslimexamples/${IMAGE_NAME}
+	docker-slim ${DSLIM_EXTRA_FLAGS} build ${DSLIM_EXTRA_BUILD_FLAGS} --include-shell --include-exe ${EXE_NAME} dslimexamples/${IMAGE_NAME}
 
 .PHONY:
-slim-build-artifacts:
-	@echo "${GREEN}Building Slim Image and Saving Artifacts${RESET}"
-	docker-slim --report ${IMAGE_NAME}.slim.report.json build ${DSLIM_EXTRA_BUILD_FLAGS} --copy-meta-artifacts ${EXAMPLE_DIR} dslimexamples/${IMAGE_NAME}
+slim-build-and-keep-artifacts:
+	@echo "${GREEN}Building Slim Image and Keeping Artifacts${RESET}"
+	docker-slim ${DSLIM_EXTRA_FLAGS} --report ${IMAGE_NAME}.slim.report.json build ${DSLIM_EXTRA_BUILD_FLAGS} --copy-meta-artifacts ${EXAMPLE_DIR} dslimexamples/${IMAGE_NAME}
 
 .PHONY:
 slim-push:
@@ -84,6 +89,10 @@ slim-push:
 slim-run:
 	@echo "${GREEN}Running Slim Image${RESET}"
 	docker run --rm ${DOCKER_RUN_MODE} --publish ${API_PORT}:${API_PORT} --name ${CONTAINER_NAME} dslimexamples/${IMAGE_NAME}.slim
+
+.PHONY:
+slim-run-seccomp:
+	docker run --rm ${DOCKER_RUN_MODE} --publish ${API_PORT}:${API_PORT} --security-opt seccomp=${EXAMPLE_DIR}/dslimexamples-${IMAGE_NAME}-seccomp.json --name ${CONTAINER_NAME} dslimexamples/${IMAGE_NAME}.slim
 
 .PHONY:
 slim-run-interactive:
@@ -99,7 +108,19 @@ slim-stop:
 	$(stop-container)
 
 .PHONY:
+exec:
+	docker exec ${CONTAINER_NAME} ${EXE_NAME}
+
+.PHONY:
+exec-interactive:
+	docker exec -it ${CONTAINER_NAME} ${EXE_NAME}
+
+.PHONY:
 exec-shell:
+	docker exec ${CONTAINER_NAME} ${SHELL_NAME}
+
+.PHONY:
+exec-shell-interactive:
 	docker exec -it ${CONTAINER_NAME} ${SHELL_NAME}
 
 .PHONY:
@@ -107,10 +128,16 @@ debug-sidecar:
 	docker run --rm -it --pid=container:${CONTAINER_NAME} --net=container:${CONTAINER_NAME} --cap-add sys_admin alpine sh
 
 .PHONY:
-test-slim-build-web: fat-build fat-run fat-validate fat-stop slim-build slim-run slim-validate slim-stop clean
+test-slim-build-web: _TEST_MSG = Slimming Previously Built Image (Web Service Mode)
+test-slim-build-web: _say-test fat-build fat-run fat-validate fat-stop slim-build slim-run slim-validate slim-stop clean
 
 .PHONY:
-test-slim-build-web-from-dockerfile: slim-build-from-dockerfile slim-run slim-validate slim-stop clean
+test-slim-build-web-from-dockerfile: _TEST_MSG = Slimming Image Using Dockerfile (Web Service Mode)
+test-slim-build-web-from-dockerfile: _say-test slim-build-from-dockerfile slim-run slim-validate slim-stop clean
+
+.PHONY:
+test-slim-build-web-with-shell-and-exe: _TEST_MSG = Slimming Image Keeping ${SHELL_NAME} and ${EXE_NAME} (Web Service Mode)
+test-slim-build-web-with-shell-and-exe: _say-test fat-build fat-run fat-validate fat-stop slim-build-with-shell-and-exe slim-run slim-validate exec slim-stop clean
 
 .PHONY:
 test-slim-build-cli: DOCKER_RUN_MODE=-i
