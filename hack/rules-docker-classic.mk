@@ -31,7 +31,7 @@ fat-run-seccomp:
 .PHONY:
 fat-run-interactive:
 	@echo "${GREEN}Running Fat Image (interactive)${RESET}"
-	docker run --rm -it --publish ${API_PORT}:${API_PORT} --name ${CONTAINER_NAME} dslimexamples/${IMAGE_NAME}
+	docker run --rm -i --publish ${API_PORT}:${API_PORT} --name ${CONTAINER_NAME} dslimexamples/${IMAGE_NAME}
 
 .PHONY:
 fat-run-interactive-shell:
@@ -96,7 +96,7 @@ slim-run-seccomp:
 .PHONY:
 slim-run-interactive:
 	@echo "${GREEN}Running Slim Image (interactive)${RESET}"
-	docker run --rm -it --publish ${API_PORT}:${API_PORT} --name ${CONTAINER_NAME} dslimexamples/${IMAGE_NAME}.slim
+	docker run --rm -i --publish ${API_PORT}:${API_PORT} --name ${CONTAINER_NAME} dslimexamples/${IMAGE_NAME}.slim
 
 .PHONY:
 slim-validate:
@@ -112,7 +112,7 @@ exec:
 
 .PHONY:
 exec-interactive:
-	docker exec -it ${CONTAINER_NAME} ${EXE_NAME}
+	docker exec -i ${CONTAINER_NAME} ${EXE_NAME}
 
 .PHONY:
 exec-shell:
