@@ -1,4 +1,6 @@
-# Node application on Ubuntu Linux
+# Node Service on Ubuntu Linux
+
+NOTE: This example doesn't work on arm64 Apple silicon chips (_aka_ M1).
 
 Commands:
 
@@ -6,12 +8,18 @@ Commands:
 make                             # run example (semi-automatic)
 
 make fat-build                   # build the "fat" version of the image
-make fat-run-interactive         # run the CLI app using the "fat" image
+make fat-run                     # run the web service using the "fat" image
+make fat-validate                # send a request to the running web service
+make fat-stop                    # stop the running web service
 
 make slim-build                  # turn the "fat" image into a "slim" one
-make slim-run-interactive        # run the CLI app using the "slim" image
+make slim-run                    # run the web service using the "slim" image
+make slim-validate               # send a request to the running web service
+make slim-stop                   # stop the running web service
 
 make slim-build-from-dockerfile  # build the "slim" version of the image using the "fat" Dockerfile
+
+make debug-sidecar               # run a debug sidecar container with an interactive shell
 
 make test-e2e                    # run the acceptance test suite
 make clean                       # remove all artifacts created by this example
