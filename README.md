@@ -6,7 +6,7 @@
 
 # Overview
 
-`docker-slim` has been used with Node.js, Python, Ruby, Java, Golang, Rust, Elixir and PHP (some app types) running on Ubuntu, Debian, CentOS and Alpine Linux.
+`docker-slim` has been used with Node.js, Python, Ruby, Java, Go, Rust, Elixir and PHP (some app types) running on Ubuntu, Debian, CentOS and Alpine Linux.
 
 Active areas of interest:
 * Complex Python, Ruby and PHP examples with the popular application servers and Nginx or Apache.
@@ -39,7 +39,7 @@ Ruby application images:
 * from ruby:2.2-alpine - 319MB => 27MB   (minified by **11.88X**)
 * from ruby:2.5.3      - 978MB => 30MB   (minified by **32.74X**)
 
-Golang application images:
+Go application images:
 
 * from golang:latest - 700MB => 1.56MB (minified by **448.76X**)
 * from ubuntu:14.04  - 531MB => 1.87MB (minified by **284.10X**)
@@ -50,7 +50,7 @@ Rust application images:
 
 * from rust:1.31 - 2GB => 14MB (minified by **147.16X**) 
 
-JAVA application images:
+Java application images:
 
 * from ubuntu:14.04 - 743.6 MB => 100.3 MB
 
@@ -72,3 +72,63 @@ Elixir application images:
 * from mcr.microsoft.com/dotnet/runtime-deps:5.0-alpine-amd64       - 31MB  => 28MB (minified by **1.11X**)
 * from mcr.microsoft.com/dotnet/runtime-deps:5.0-buster-slim-amd64  - 132MB => 32MB (minified by **4.11X**)
 * from mcr.microsoft.com/dotnet/runtime-deps:5.0-focal-amd64        - 140MB => 32MB (minified by **4.31X**)
+
+
+# How to use examples
+
+While DockerSlim is capable of more, at the moment, the majority of the examples illustrate
+the image minification procedure using `docker-slim build` command in its various modes. 
+
+A typical example has a _README_ file describing its purpose and basic usage.
+Normally, there is also a _Makefile_ with the `default` target. So, running
+`make` or `make default` from inside of the example folder would execute the example
+for you _end-to-end_ outputting all the used commands on the way.
+
+Most frequently used `make` targets:
+
+```sh
+# All example types
+make                             # run example (semi-automatic)
+make test-e2e                    # run the acceptance test suite
+make clean                       # remove all artifacts created by this example
+
+
+# 'CLI application' example type
+make fat-build                   # build the "fat" version of the image
+make fat-run-interactive         # run the CLI app using the "fat" image
+
+make slim-build                  # turn the "fat" image into a "slim" one
+make slim-run-interactive        # run the CLI app using the "slim" image
+
+make slim-build-from-dockerfile  # build the "slim" version of the image using the "fat" Dockerfile
+
+
+# 'Web Service' example type
+make fat-build                   # build the "fat" version of the image
+make fat-run                     # run the web service using the "fat" image
+make fat-run-seccomp             # run the "fat" image using generated seccomp profile
+make fat-validate                # send a request to the running web service
+make fat-stop                    # stop the running web service
+
+make slim-build                  # turn the "fat" image into a "slim" one
+make slim-run                    # run the web service using the "slim" image
+make slim-run-seccomp            # run the "slim" image using generated seccomp profile
+make slim-validate               # send a request to the running web service
+make slim-stop                   # stop the running web service
+
+make slim-build-from-dockerfile  # build the "slim" version of the image using the "fat" Dockerfile
+
+make debug-sidecar               # run a debug sidecar container with an interactive shell
+
+
+'Docker Compose' example type
+make fat-build                   # build the "fat" version of the image
+make fat-run                     # run the compose file using the "fat" image
+make fat-validate                # send a request to the running web service
+make fat-stop                    # stop the running web service
+
+make slim-build-compose          # turn the "fat" image into a "slim" one using docker-compose file
+make slim-run                    # run the compose file using the "slim" image
+make slim-validate               # send a request to the running web service
+make slim-stop                   # stop the running web service
+```
