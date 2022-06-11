@@ -23,7 +23,7 @@ endif
 ARCH ?= $(shell uname -m)
 
 # Common example parameters - overridden by _docker-slim.env files.
-API_PROTO ?= HTTP  # Case-sensetive. Supported protos: HTTP, HTTP2, FastCGI
+API_PROTO ?= HTTP  # Case-sensetive. Supported protos: HTTP, HTTPS, HTTP2, HTTP2C (HTTP2 w/o HTTPS), FastCGI
 API_HOST ?= 127.0.0.1
 API_PORT ?= 1300
 API_PATH ?= /
@@ -33,11 +33,16 @@ DSLIM_EXTRA_FLAGS ?=
 DSLIM_BUILD_EXTRA_FLAGS ?=
 
 # Private parameters
-ifeq (${API_PROTO},HTTP2)
-_CURL_PROTO = https
+ifeq (${API_PROTO},HTTPS)
+_CURL_SCHEME = https
+else ifeq (${API_PROTO},HTTP2)
+_CURL_SCHEME = https
 _CURL_EXTRA_FLAGS = --http2 --insecure
+else ifeq (${API_PROTO},HTTP2C)
+_CURL_SCHEME = http
+_CURL_EXTRA_FLAGS = --http2-prior-knowledge
 else
-_CURL_PROTO = http
+_CURL_SCHEME = http
 endif
 
 ifeq (${API_PROTO},FastCGI)
@@ -55,7 +60,7 @@ define query-running-service
 @echo "${GREEN}Validating Container ${CONTAINER_NAME}${RESET}"
 @for i in 1 2 3 ; do \
     echo "Attempt $$i"; \
-    if curl -vvv --fail --connect-timeout 10 --max-time 10 --retry 10 --retry-delay 1 --retry-connrefused ${_CURL_EXTRA_FLAGS} ${_CURL_PROTO}://${API_HOST}:${API_PORT}${API_PATH}; then \
+    if curl -vvv --fail --connect-timeout 10 --max-time 10 --retry 10 --retry-delay 1 --retry-connrefused ${_CURL_EXTRA_FLAGS} ${_CURL_SCHEME}://${API_HOST}:${API_PORT}${API_PATH}; then \
         echo "${GREEN}Passed!${RESET}"; \
         break; \
     fi; \
