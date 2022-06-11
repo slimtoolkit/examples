@@ -30,7 +30,7 @@ API_PATH ?= /
 SHELL_NAME ?= bash
 EXE_NAME ?= uname
 DSLIM_EXTRA_FLAGS ?=
-DSLIM_EXTRA_BUILD_FLAGS ?=
+DSLIM_BUILD_EXTRA_FLAGS ?=
 
 # Private parameters
 ifeq (${API_PROTO},HTTP2)
@@ -70,9 +70,9 @@ endef
 
 endif
 
-define print_validate_image_size
+define assert_image_size
 @echo "${GREEN}Checking Image ${EXPECTED_IMAGE_NAME}..."
-@${HACK_DIR}/print-validate-image-size.sh
+@${HACK_DIR}/assert-image-size.sh
 @printf "${RESET}"
 endef
 
