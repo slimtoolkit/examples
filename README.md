@@ -121,7 +121,7 @@ make slim-build-from-dockerfile  # build the "slim" version of the image using t
 make debug-sidecar               # run a debug sidecar container with an interactive shell
 
 
-'Docker Compose' example type
+# 'Docker Compose' example type
 make fat-build                   # build the "fat" version of the image
 make fat-run                     # run the compose file using the "fat" image
 make fat-validate                # send a request to the running web service
