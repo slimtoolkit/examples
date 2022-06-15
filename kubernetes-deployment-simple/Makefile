@@ -35,7 +35,6 @@ fat-stop: stop
 slim-build-from-running-fat:
 	docker-slim build \
 		--tag dslimexamples/${IMAGE_NAME}.slim \
-		--kube-config ${HOME}/.kube/config \
 		--target-kube-workload deployment/${APP_NAME}
 #		--http-probe=false \
 #		--continue-after exec \
@@ -46,9 +45,8 @@ slim-build-from-manifest: export IMAGE=dslimexamples/${IMAGE_NAME}
 slim-build-from-manifest: manifest
 	docker-slim build \
 		--tag dslimexamples/${IMAGE_NAME}.slim \
-		--kube-config ${HOME}/.kube/config \
 		--target-kube-workload deployment/${APP_NAME} \
-		--kube-manifests ${EXAMPLE_DIR}/manifest.yaml
+		--kube-manifest-file ${EXAMPLE_DIR}/manifest.yaml
 #		--http-probe=false \
 #		--continue-after exec \
 #		--exec 'curl localhost:${API_PORT}'
@@ -80,12 +78,12 @@ test:
 	kill %1 \
 
 .PHONY:
-stop:
+stop: manifest
 	kubectl delete -f ${EXAMPLE_DIR}/manifest.yaml
 
 .PHONY:
 manifest:
-	cat ${EXAMPLE_DIR}/app/kubernetes/* | envsubst > ${EXAMPLE_DIR}/manifest.yaml
+	@cat ${EXAMPLE_DIR}/app/kubernetes/* | envsubst > ${EXAMPLE_DIR}/manifest.yaml
 
 .PHONY:
 delete-images:

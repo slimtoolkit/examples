@@ -17,7 +17,7 @@ fi
 EXPECTED_BYTES=$(docker run --platform=linux/amd64 --rm cmd.cat/numfmt numfmt --from auto ${EXPECTED_IMAGE_SIZE} 2>/dev/null)
 EXPECTED_DEVIATION=$((5 * ${EXPECTED_BYTES} / 100))  # 5% from the total size
 
-MAX_DEVIATION=$((5 * ${Mi}))  # +/-5MiB
+MAX_DEVIATION=$((20 * ${Mi}))  # +/-20MiB
 if [ "${EXPECTED_DEVIATION}" -gt "${MAX_DEVIATION}" ]; then
     EXPECTED_DEVIATION=${MAX_DEVIATION}
 fi
