@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${APP_NAME}
+  labels:
+    app: ${APP_NAME}
+spec:
+  ports:
+    - name: http-1300
+      port: 1300
+      targetPort: 1300
+  selector:
+    app: ${APP_NAME}
