@@ -1,0 +1,12 @@
+version: '2' #added
+services:
+  web: 
+    build:
+      context: app
+      target: builder
+    image: flask_web
+    # flask requires SIGINT to stop gracefully
+    # (default stop signal from Compose is SIGTERM)
+    stop_signal: SIGINT
+    ports:
+      - '8000:8000'

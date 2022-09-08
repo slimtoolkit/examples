@@ -1,7 +1,7 @@
 version: '2' #added
 services:
   web: 
-    build: app 
-    image: django_web #added
+    #build: app 
+    image: flask_web.slim #added
     ports: 
       - '8000:8000'
