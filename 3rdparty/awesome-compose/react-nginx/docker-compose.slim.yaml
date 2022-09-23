@@ -1,0 +1,7 @@
+services:
+  frontend:
+    build:
+      context: .
+    image: dslimexamples/react-nginx_frontend.slim:latest #added
+    ports:
+      - "80:80"

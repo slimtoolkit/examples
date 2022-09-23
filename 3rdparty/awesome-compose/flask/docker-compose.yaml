@@ -4,7 +4,7 @@ services:
     build:
       context: app
       target: builder
-    image: flask_web
+    image: dslimexamples/flask_web:latest
     # flask requires SIGINT to stop gracefully
     # (default stop signal from Compose is SIGTERM)
     stop_signal: SIGINT
