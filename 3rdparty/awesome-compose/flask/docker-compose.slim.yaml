@@ -1,0 +1,7 @@
+version: '2' #added
+services:
+  web: 
+    #build: app 
+    image: dslimexamples/flask_web.slim:latest #added
+    ports: 
+      - '8000:8000'

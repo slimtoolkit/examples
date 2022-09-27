@@ -1,0 +1,8 @@
+services:
+  frontend:
+    build:
+      context: .
+    container_name: frontend
+    image: dslimexamples/react-nginx_frontend
+    ports:
+      - "80:80"

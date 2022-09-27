@@ -49,6 +49,15 @@ slim-build-compose:
 	docker-slim ${DSLIM_EXTRA_FLAGS} build ${DSLIM_BUILD_EXTRA_FLAGS} --target-compose-svc ${COMPOSE_TARGET_SVC} --compose-file ${COMPOSE_FILE_FAT}
 	$(assert_image_size)
 
+
+.PHONY:
+slim-build-pull-compose: EXPECTED_IMAGE_NAME=dslimexamples/${IMAGE_NAME}.slim
+slim-build-pull-compose: EXPECTED_IMAGE_SIZE=${EXPECTED_IMAGE_SIZE_SLIM_${ARCH}}
+slim-build-pull-compose:
+	@echo "${GREEN}Building Slim Image From Compose File${RESET}"
+	docker-slim ${DSLIM_EXTRA_FLAGS} build ${DSLIM_BUILD_EXTRA_FLAGS} --pull --target-compose-svc ${COMPOSE_TARGET_SVC} --compose-file ${COMPOSE_FILE_FAT}
+	$(assert_image_size)
+
 .PHONY:
 slim-run:
 	@echo "${GREEN}Running Slim Compose File${RESET}"
