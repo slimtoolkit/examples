@@ -1,4 +1,4 @@
-FROM node:lts-bullseye as build-stage
+FROM node:16-bullseye as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
