@@ -3,7 +3,7 @@
 here="$(dirname "$BASH_SOURCE")"
 cd $here/..
 
-docker rmi gabimelo-flask-boilerplate_app.slim
+docker rmi gabimeloflaskboilerplate_app.slim
 
 
 

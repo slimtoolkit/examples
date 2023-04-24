@@ -13,3 +13,5 @@ services:
     environment:
       POSTGRES_USER: todoapp
       POSTGRES_DB: todos
+      POSTGRES_HOST_AUTH_METHOD: trust
+

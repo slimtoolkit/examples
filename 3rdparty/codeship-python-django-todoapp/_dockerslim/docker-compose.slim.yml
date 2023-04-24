@@ -1,7 +1,7 @@
 version: '3'
 services:
   web:
-    image: codeship-python-django-todoapp_web.slim
+    image: codeshippythondjangotodoapp_web.slim
     depends_on:
       - postgres
     ports:
@@ -13,3 +13,4 @@ services:
     environment:
       POSTGRES_USER: todoapp
       POSTGRES_DB: todos
+      POSTGRES_HOST_AUTH_METHOD: trust
