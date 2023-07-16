@@ -1,6 +1,6 @@
 ## NOTES
 
-This is a (slightly modified) copy of the https://github.com/svx/poetry-fastapi-docker project (Python, Poetry package manager and FastAPI). The project already has a manually optimized container image that's pretty small (171MB) relative to what you'd get with a simple Dockerfile. This example shows how `slim` can optimize the container image even further (making it more than 4 times smaller).
+This is a (slightly modified) copy of the https://github.com/svx/poetry-fastapi-docker project (Python, Poetry package manager and FastAPI). The project already has a manually optimized container image that's pretty small (171MB) relative to what you'd get with a simple Dockerfile. This example shows how `slim` can optimize the container image even further (making it more than `4 times smaller`).
 
 When you are done you'll have a couple of images like this:
 
