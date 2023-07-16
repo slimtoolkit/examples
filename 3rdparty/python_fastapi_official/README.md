@@ -12,4 +12,4 @@ dslimexamples/server-python-fastapi-official            latest              b6cb
 
 Use `make` (`make build_and_slim`) or the helper scripts directly (see the `.command` version for Mac OS if you like clicking :-)).
 
-The `_slim.env` file declares the environment variables required by the `docker-slim` helper scripts (in `_slim`). The helper scripts in `_slim` allow you to do everything you need with the app container (create/run/minify/etc). See [`_slim/README.md`](_slim/README.md) for more details.
+The `_slim.env` file declares the environment variables required by the `slim` helper scripts (in `_slim`). The helper scripts in `_slim` allow you to do everything you need with the app container (create/run/minify/etc). See [`_slim/README.md`](_slim/README.md) for more details.

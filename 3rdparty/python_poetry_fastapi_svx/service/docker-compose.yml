@@ -1,0 +1,8 @@
+# version: "3.7" # Uncomment for older compose versions
+services:
+  poetry-project:
+    container_name: poetry-project
+    image: dslimexamples/server-python-poetry-fastapi-svx
+    #build: .
+    ports:
+      - "1300:1300"
