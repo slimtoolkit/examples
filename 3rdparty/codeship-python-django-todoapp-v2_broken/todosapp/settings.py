@@ -91,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'todos',
         'USER': 'todoapp',
-        'PASSWORD': '',
+        'PASSWORD': os.getenv('DATABASE_PASS'),
         'HOST': 'postgres',
         'PORT': '5432',
     }

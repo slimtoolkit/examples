@@ -11,9 +11,11 @@ services:
     ports:
       - "8000:8000"
     environment:
+      DATABASE_PASS: password
       DATABASE_URL: postgres://todoapp@postgres/todos
   postgres:
     image: healthcheck/postgres:alpine
     environment:
       POSTGRES_USER: todoapp
       POSTGRES_DB: todos
+      POSTGRES_PASSWORD: password
