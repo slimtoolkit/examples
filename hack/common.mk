@@ -50,7 +50,8 @@ ifeq (${API_PROTO},FastCGI)
 # FastCGI probe
 define query-running-service
 # TODO: The `docker-slim probe` command is actually NOOP at the moment.
-@docker-slim probe ${API_HOST}:${API_PORT}/${API_PATH}
+# @docker-slim probe ${API_HOST}:${API_PORT}/${API_PATH}
+echo "TODO - REPLACE NO-OP PROBE WITH REAL CHECK"
 endef
 
 else
