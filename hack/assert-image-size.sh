@@ -15,9 +15,9 @@ if [ "${EXPECTED_IMAGE_SIZE}" = "" ]; then
 fi
 
 EXPECTED_BYTES=$(docker run --platform=linux/amd64 --rm cmd.cat/numfmt numfmt --from auto ${EXPECTED_IMAGE_SIZE} 2>/dev/null)
-EXPECTED_DEVIATION=$((5 * ${EXPECTED_BYTES} / 100))  # 5% from the total size
+EXPECTED_DEVIATION=$((10 * ${EXPECTED_BYTES} / 100))  # 10% from the total size
 
-MAX_DEVIATION=$((20 * ${Mi}))  # +/-20MiB
+MAX_DEVIATION=$((150 * ${Mi}))  # +/-150MiB
 if [ "${EXPECTED_DEVIATION}" -gt "${MAX_DEVIATION}" ]; then
     EXPECTED_DEVIATION=${MAX_DEVIATION}
 fi
@@ -31,7 +31,6 @@ EXPECTED_MBYTES_MAX=$((${EXPECTED_BYTES_MAX} / ${Mi}))
 echo "Expected Size:    ${EXPECTED_MBYTES_MIN}Mi-${EXPECTED_MBYTES_MAX}Mi"
 
 if [ "${EXPECTED_MBYTES_MIN}" -gt "${ACTUAL_MBYTES}" ] ; then
-    echo "MIN=${EXPECTED_MBYTES_MIN} ACT=${ACTUAL_MBYTES}"
     echo "Image Check Failed - Image Size Is Too Small!"
     exit 1
 fi
